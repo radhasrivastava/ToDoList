@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            background-color: rgb(198, 146, 228);
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .cont{
+            text-align: center;
+            width: 360px;
+            padding: 33px;
+            background-color: rgb(235, 236, 236);
+            margin: 33%;
+            margin-top: 20px;
+            border-radius: 20px;
+        }
+
+        input{
+            width: 200px;
+            padding: 8px;
+            border: 2px solid black;
+            outline: 0cm;
+            font-size: 18px;
+            border-radius: 60px;
+        }
+
+        button{
+            width: 60px;
+            height: 30px;
+            background-color: black;
+            color: wheat;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nbar{
+            background-color: rgb(3, 54, 50);
+            border-radius: 30px;
+        }
+
+        .nbar ul{
+            overflow: auto;
+        }
+
+        .nbar li{
+            float: left;
+            list-style: none;
+            margin: 13px 10px;
+        }
+
+        .nbar li a{
+            padding: 5px;
+            text-decoration: none;
+            color: antiquewhite;
+        }
+
+        .nbar li a:hover{
+            color: blue;
+        }
+
+        .search{
+            float: right;
+            color: antiquewhite;
+            padding: 12px 75px;
+        }
+
+        .nbar input{
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 3px 17px;
+            width: 129px;
+        }
+
+        .text ul{
+            position: relative;
+            background-color: rgb(80, 8, 80);
+            color: aliceblue;
+            font-size: 20px;
+            text-align: justify;
+            padding: 6px;
+            border-radius: 40px;
+        }
+
+        .text ul i{
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nbar">
+            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Setting</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <div class="search">
+                    <input type="text" name="search" id="search" placeholder="search here"/>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="cont">
+        <h1>ToDo List</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Enter your task" id="inp"/>
+            <button onclick="Add()">Add</button>
+        </div>
+
+        <div
+        class="text">
+        </div>
+    </div>
+
+    <script>let input = document.getElementById("inp");
+        let text = document.querySelector(".text");
+        
+        function Add(){
+            if(input.value == ""){
+                alert("Please Enter Your Task")
+            }else{
+                let newElement = document.createElement("ul");
+                newElement.innerHTML= `${input.value} <i class="fa-solid fa-trash"></i>`;
+                text.appendChild(newElement);
+                input.value="";
+                newElement.querySelector("i").addEventListener("click", remove);
+                function remove(){
+                    newElement.remove()
+                }
+        
+            }
+        }</script>
+</body>
+</html>
